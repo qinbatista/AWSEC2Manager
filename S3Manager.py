@@ -6,6 +6,7 @@ import json
 import platform
 import getpass
 
+
 class S3Manager:
     def __init__(self):
         if platform.system() == "Darwin":
@@ -28,7 +29,7 @@ class S3Manager:
                 content = f.readlines()
                 os.remove(self.__file_path)
 
-    def __exec_aws_command(self, command)->list:
+    def __exec_aws_command(self, command) -> list:
         self.__get_static_ip_stdout = open(self.__fn_stdout, "w+")
         self.__get_static_ip_stderr = open(self.__fn_tderr, "w+")
         process = subprocess.Popen(
@@ -55,7 +56,7 @@ class S3Manager:
         self.__log(aws_result)
         return aws_result
 
-    def _list_folder(self, _folder_name)->list:
+    def _list_folder(self, _folder_name) -> list:
         cli_command = f'aws s3 ls {self.__s3_bucket}{_folder_name}'
         result = self.__exec_aws_command(cli_command)
         try:
@@ -82,4 +83,15 @@ class S3Manager:
 
 if __name__ == "__main__":
     ss = S3Manager()
-    ss._list_folder("")
+    folder_list = ["鱿鱼游戏.Squid.Game.2021.EP01-09.HD1080P.X264.AAC.Korean.CHS.Mp4er",
+                   "美国的故事声书",
+                   "火影忍者",
+                   "周星驰",
+                   "冒险岛技能全展示",
+                   "Unity3D",
+                   "Python3",
+                   "Music"
+                   ]
+    for folder_name in folder_list:
+        print("folder_name:" + folder_name)
+        ss._sync_folder(f"/Video/{folder_name}", f"/Videos/{folder_name}")
