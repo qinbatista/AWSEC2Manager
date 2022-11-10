@@ -14,7 +14,8 @@ class EC2Manager:
         os.system(f"ssh -i '{self.__pem_path}' admin@{self.__ec2_ip}")
 
     def _stop_instance(self, id):
-        os.system(f"aws ec2 terminate-instances --instance-ids {id}")
+        os.system(f"aws ec2 terminate-instances --instance-ids {id} > output.txt")
+        os.system("rm output.txt")
 
     def _stop_instances(self):
         output = subprocess.getoutput(f'aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro" --query "Reservations[].Instances[].InstanceId"')
