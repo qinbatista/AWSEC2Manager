@@ -83,14 +83,10 @@ class S3Manager:
 
 if __name__ == "__main__":
     ss = S3Manager()
-    folder_list = ["鱿鱼游戏.Squid.Game.2021.EP01-09.HD1080P.X264.AAC.Korean.CHS.Mp4er",
-                   "美国的故事声书",
-                   "火影忍者",
-                   "周星驰",
-                   "冒险岛技能全展示",
-                   "Unity3D",
-                   "Python3",
-                   "Music"
+    folder_list = [
+                   "Movie",
+                   "miniFish",
+                   "KingOfFight",
                    ]
     for folder_name in folder_list:
         print("folder_name:" + folder_name)
