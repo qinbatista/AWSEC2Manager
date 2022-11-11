@@ -85,8 +85,6 @@ if __name__ == "__main__":
     ss = S3Manager()
     folder_list = [
                    "Movie",
-                   "miniFish",
-                   "KingOfFight",
                    ]
     for folder_name in folder_list:
         print("folder_name:" + folder_name)
